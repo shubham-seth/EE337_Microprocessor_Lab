@@ -1,0 +1,124 @@
+A51 MACRO ASSEMBLER  QUESTION_2                                                           03/10/2021 15:16:31 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Question_2.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE Question_2.asm SET(SMALL) DEBUG PRINT(.\Listings\Question_2.lst) OBJECT(.\Objec
+                      ts\Question_2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020300            2     LJMP main
+0300                   3     ORG 300H
+                       4             
+0300                   5     main:
+0300 C280              6             CLR P0.0 ;setting as output pin
+0302 758911            7             MOV TMOD, #11H
+0305 78A0              8             MOV R0, #0A0H
+0307                   9             LOOP_SA:
+0307 758D9E           10                     MOV TH1, #9EH
+030A 758B68           11                     MOV TL1, #68H
+030D C28F             12                     CLR TCON.7
+030F D28E             13                     SETB TCON.6
+0311                  14                     sa_wave_generator:
+0311 712E             15                             ACALL Sa_square_wave
+0313 308FFB           16                             JNB TCON.7, sa_wave_generator
+0316 D8EF             17                     DJNZ R0, LOOP_SA
+                      18             
+0318 7888             19             MOV R0, #88H
+031A                  20             LOOP_RE:
+031A 758D9E           21                     MOV TH1, #9EH
+031D 758B68           22                     MOV TL1, #68H
+0320 C28F             23                     CLR TCON.7
+0322 D28E             24                     SETB TCON.6
+0324                  25                     re_wave_generator:
+0324 7151             26                             ACALL Re_square_wave
+0326 308FFB           27                             JNB TCON.7, re_wave_generator
+0329 D8EF             28                     DJNZ R0, LOOP_RE
+                      29                     
+032B 020300           30     LJMP main
+                      31                     
+032E                  32     Sa_square_wave:
+032E                  33             high_pulse:
+032E 758CEF           34                     MOV TH0, #0EFH
+0331 758AB6           35                     MOV TL0, #0B6H
+0334 C28D             36                     CLR TCON.5
+0336 D28C             37                     SETB TCON.4
+0338 D280             38                     SETB P0.0
+033A 208D02           39                     checker_high: jb TCON.5, low_pulse ;Checks if enough time has elapsed
+033D 80FB             40                     sjmp checker_high
+033F                  41             low_pulse:
+033F 758CEF           42                     MOV TH0, #0EFH
+0342 758AB6           43                     MOV TL0, #0B6H
+0345 C28D             44                     CLR TCON.5
+0347 D28C             45                     SETB TCON.4
+0349 C280             46                     CLR P0.0
+034B 208D02           47                     checker_low: jb TCON.5, out_sa ;Checks if enough time has elapsed
+034E 80FB             48                     sjmp checker_low
+0350                  49             out_sa:
+0350 22               50                     RET
+                      51             
+0351                  52     Re_square_wave:
+0351                  53             high_pulse_re:
+0351 758CF1           54                     MOV TH0, #0F1H
+0354 758A7F           55                     MOV TL0, #7FH
+0357 C28D             56                     CLR TCON.5
+0359 D28C             57                     SETB TCON.4
+A51 MACRO ASSEMBLER  QUESTION_2                                                           03/10/2021 15:16:31 PAGE     2
+
+035B D280             58                     SETB P0.0
+035D 208D02           59                     checker_high_re: jb TCON.5, low_pulse_re ;Checks if enough time has elapsed
+0360 80FB             60                     sjmp checker_high_re
+0362                  61             low_pulse_re:
+0362 758CF1           62                     MOV TH0, #0F1H
+0365 758A7F           63                     MOV TL0, #7FH
+0368 C28D             64                     CLR TCON.5
+036A D28C             65                     SETB TCON.4
+036C C280             66                     CLR P0.0
+036E 208D02           67                     checker_low_re: jb TCON.5, out_re ;Checks if enough time has elapsed
+0371 80FB             68                     sjmp checker_low_re
+0373                  69             out_re:
+0373 22               70                     RET
+                      71             
+0374                  72     here:
+                      73             END
+A51 MACRO ASSEMBLER  QUESTION_2                                                           03/10/2021 15:16:31 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CHECKER_HIGH . . .  C ADDR   033AH   A   
+CHECKER_HIGH_RE. .  C ADDR   035DH   A   
+CHECKER_LOW. . . .  C ADDR   034BH   A   
+CHECKER_LOW_RE . .  C ADDR   036EH   A   
+HERE . . . . . . .  C ADDR   0374H   A   
+HIGH_PULSE . . . .  C ADDR   032EH   A   
+HIGH_PULSE_RE. . .  C ADDR   0351H   A   
+LOOP_RE. . . . . .  C ADDR   031AH   A   
+LOOP_SA. . . . . .  C ADDR   0307H   A   
+LOW_PULSE. . . . .  C ADDR   033FH   A   
+LOW_PULSE_RE . . .  C ADDR   0362H   A   
+MAIN . . . . . . .  C ADDR   0300H   A   
+OUT_RE . . . . . .  C ADDR   0373H   A   
+OUT_SA . . . . . .  C ADDR   0350H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+RE_SQUARE_WAVE . .  C ADDR   0351H   A   
+RE_WAVE_GENERATOR.  C ADDR   0324H   A   
+SA_SQUARE_WAVE . .  C ADDR   032EH   A   
+SA_WAVE_GENERATOR.  C ADDR   0311H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

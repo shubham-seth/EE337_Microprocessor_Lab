@@ -1,0 +1,43 @@
+A51 MACRO ASSEMBLER  TRIAL                                                                02/03/2021 12:48:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\trial.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE trial.asm SET(SMALL) DEBUG PRINT(.\Listings\trial.lst) OBJECT(.\Objects\trial.o
+                      bj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+                       4             
+0100                   5     MAIN:
+0100 7AFA              6             MOV R2, #250
+0102                   7             LOOP_OUTERMOST:
+0102 78B6              8                     MOV R0, #182
+0104                   9                     LOOP_OUT:
+0104 7904             10                             MOV R1, #4
+0106                  11                             LOOP_INNER:
+0106 D9FE             12                             DJNZ R1, LOOP_INNER
+0108 D8FA             13                     DJNZ R0, LOOP_OUT
+010A DAF6             14             DJNZ R2, LOOP_OUTERMOST
+                      15     END
+A51 MACRO ASSEMBLER  TRIAL                                                                02/03/2021 12:48:14 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+LOOP_INNER . . . .  C ADDR   0106H   A   
+LOOP_OUT . . . . .  C ADDR   0104H   A   
+LOOP_OUTERMOST . .  C ADDR   0102H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

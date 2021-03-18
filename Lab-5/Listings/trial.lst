@@ -1,0 +1,59 @@
+A51 MACRO ASSEMBLER  TRIAL                                                                02/17/2021 12:58:11 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\trial.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE trial.asm SET(SMALL) DEBUG PRINT(.\Listings\trial.lst) OBJECT(.\Objects\trial.o
+                      bj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020300            2     LJMP main
+0300                   3     ORG 300H
+                       4     
+0300                   5     main:
+0300 7850              6             MOV R0, #50H
+0302                   7             LOOP:
+0302 7109              8                     acall delay
+0304 D8FC              9                     DJNZ R0, LOOP
+0306 02031E           10             LJMP final
+                      11     
+0309                  12     delay:
+0309 758C9E           13             MOV TH0, #9EH
+030C 758A68           14             MOV TL0, #68H
+030F 758901           15             MOV TMOD, #01H
+0312 C28D             16             CLR TCON.5
+0314 D28C             17             SETB TCON.4
+0316                  18             here: 
+0316 108D02           19                     JBC TCON.5, to_end
+0319 80FB             20             SJMP here
+031B C28C             21             to_end: CLR TCON.4
+031D 22               22             RET
+                      23     
+031E                  24     final:
+                      25     END
+A51 MACRO ASSEMBLER  TRIAL                                                                02/17/2021 12:58:11 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0309H   A   
+FINAL. . . . . . .  C ADDR   031EH   A   
+HERE . . . . . . .  C ADDR   0316H   A   
+LOOP . . . . . . .  C ADDR   0302H   A   
+MAIN . . . . . . .  C ADDR   0300H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TO_END . . . . . .  C ADDR   031BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

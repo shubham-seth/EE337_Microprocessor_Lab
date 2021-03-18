@@ -1,0 +1,76 @@
+A51 MACRO ASSEMBLER  QUESTION_2                                                           02/10/2021 15:52:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Question_2.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE Question_2.asm SET(SMALL) DEBUG PRINT(.\Listings\Question_2.lst) OBJECT(.\Objec
+                      ts\Question_2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020100            2     LJMP main
+0100                   3     ORG 100H
+                       4             
+0100                   5     main:
+0100                   6             here:
+0100 3105              7                     ACALL read_nibble               
+0102 020100            8             LJMP here
+                       9             
+0105                  10     read_nibble:
+0105 75900F           11             MOV P1, #0FH
+0108 D294             12             SETB P1.4
+010A D295             13             SETB P1.5
+010C D296             14             SETB P1.6
+010E D297             15             SETB P1.7
+0110 3121             16             ACALL delay
+0112 E590             17             MOV A, P1
+0114 540F             18             ANL A, #0FH
+0116 F54E             19             MOV 4EH, A
+0118 23               20             RL A
+0119 23               21             RL A
+011A 23               22             RL A
+011B 23               23             RL A
+011C F590             24             MOV P1, A
+011E 3121             25             ACALL delay
+0120 22               26             RET
+                      27     
+0121                  28     delay:
+0121 7B32             29             MOV R3, #50
+0123                  30             LOOP_5s:
+0123 7A64             31                     MOV R2, #100
+0125                  32                     LOOP_100ms: ;100ms delay causing loop
+0125 78B6             33                             MOV R0, #182
+0127                  34                             LOOP_1ms: ;1ms delay causing loop
+0127 7904             35                                     MOV R1, #4
+0129                  36                                     LOOP_in:
+0129 D9FE             37                                     DJNZ R1, LOOP_in
+012B D8FA             38                             DJNZ R0, LOOP_1ms
+012D DAF6             39                     DJNZ R2, LOOP_100ms
+012F DBF2             40             DJNZ R3, LOOP_5s
+0131 22               41             RET
+                      42             
+                      43     END
+A51 MACRO ASSEMBLER  QUESTION_2                                                           02/10/2021 15:52:55 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0121H   A   
+HERE . . . . . . .  C ADDR   0100H   A   
+LOOP_100MS . . . .  C ADDR   0125H   A   
+LOOP_1MS . . . . .  C ADDR   0127H   A   
+LOOP_5S. . . . . .  C ADDR   0123H   A   
+LOOP_IN. . . . . .  C ADDR   0129H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+READ_NIBBLE. . . .  C ADDR   0105H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

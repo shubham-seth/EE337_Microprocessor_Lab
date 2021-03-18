@@ -1,0 +1,68 @@
+A51 MACRO ASSEMBLER  QUESTION_1B                                                          02/17/2021 15:31:06 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Question_1b.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE Question_1b.asm SET(SMALL) DEBUG PRINT(.\Listings\Question_1b.lst) OBJECT(.\Obj
+                      ects\Question_1b.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020300            2     LJMP main
+0300                   3     ORG 300H
+                       4             
+0300                   5     main:
+0300 759000            6             MOV P1, #00H
+0303 7590F0            7             MOV P1, #0F0H
+0306 7110              8             acall delay_1s
+0308 759000            9             MOV P1, #00H
+030B 7110             10             acall delay_1s
+030D 020300           11     LJMP main
+                      12             
+0310                  13     delay_1s:
+0310 7850             14             MOV R0, #50H
+0312                  15             LOOP:
+0312 7117             16                     acall delay_min
+0314 D8FC             17                     DJNZ R0, LOOP
+0316 22               18             RET
+                      19     
+0317                  20     delay_min:
+0317 758C9E           21             MOV TH0, #9EH
+031A 758A68           22             MOV TL0, #68H
+031D 758901           23             MOV TMOD, #01H
+0320 C28D             24             CLR TCON.5
+0322 D28C             25             SETB TCON.4
+0324                  26             here: 
+0324 108D02           27                     JBC TCON.5, to_end
+0327 80FB             28             SJMP here
+0329                  29             to_end: 
+0329 C28C             30                     CLR TCON.4
+032B 22               31             RET
+                      32             
+                      33     END
+A51 MACRO ASSEMBLER  QUESTION_1B                                                          02/17/2021 15:31:06 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_1S . . . . .  C ADDR   0310H   A   
+DELAY_MIN. . . . .  C ADDR   0317H   A   
+HERE . . . . . . .  C ADDR   0324H   A   
+LOOP . . . . . . .  C ADDR   0312H   A   
+MAIN . . . . . . .  C ADDR   0300H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TO_END . . . . . .  C ADDR   0329H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

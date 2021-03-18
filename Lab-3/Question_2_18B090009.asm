@@ -1,0 +1,49 @@
+ORG 00H
+LJMP MAIN
+ORG 100H
+	
+MAIN:
+	MOV P1, #0FH
+	MOV A, P1
+	ANL A, #0FH ; Value of D in A
+	MOV R3, A ; R3 holds the value of D
+	
+	TOGGLE_7:
+		ACALL TOGGLE_6
+		ACALL TOGGLE_6
+		CPL P1.7
+	LJMP TOGGLE_7
+	
+DELAY: ;Delays by D/4
+	LOOP_D_4:
+		MOV R2, #250
+		loop_250ms: ;250ms delay causing loop
+			MOV R0, #182
+			LOOP_1ms: ;1ms delay causing loop
+				MOV R1, #4
+				LOOP_in:
+				DJNZ R1, LOOP_in
+			DJNZ R0, LOOP_1ms
+		DJNZ R2, LOOP_250ms
+	DJNZ R3, LOOP_D_4
+	MOV R3, A
+	RET
+	
+TOGGLE_4:
+	CPL P1.4
+	ACALL DELAY
+	RET
+	
+TOGGLE_5:
+	ACALL TOGGLE_4
+	ACALL TOGGLE_4
+	CPL P1.5
+	RET
+	
+TOGGLE_6:
+	ACALL TOGGLE_5
+	ACALL TOGGLE_5
+	CPL P1.6
+	RET
+	
+END

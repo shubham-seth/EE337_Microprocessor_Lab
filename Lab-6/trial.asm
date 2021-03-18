@@ -1,0 +1,8 @@
+ORG 00H
+LJMP main
+ORG 300H
+	
+main:
+	MOV A, #255
+	ADD A, #1
+	END

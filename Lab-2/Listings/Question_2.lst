@@ -1,0 +1,36 @@
+A51 MACRO ASSEMBLER  QUESTION_2                                                           02/02/2021 22:31:31 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Question_2.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE Question_2.asm SET(SMALL) DEBUG PRINT(.\Listings\Question_2.lst) OBJECT(.\Objec
+                      ts\Question_2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 74BF              1     MOV A,#0BFH
+0002 F580              2     MOV P0,A
+0004 78C9              3     MOV R0,#0C9H
+0006 7400              4     MOV A,#00
+0008 04                5     loop:INC A
+0009 18                6     DEC R0
+000A B81FFB            7     CJNE R0,#1FH,loop
+000D F580              8     MOV P0,A
+000F E580              9     MOV A,P0
+*** WARNING #A41 IN 9 (Question_2.asm, LINE 9): MISSING 'END' STATEMENT
+A51 MACRO ASSEMBLER  QUESTION_2                                                           02/02/2021 22:31:31 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+LOOP . . . . . . .  C ADDR   0008H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  1 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,42 @@
+A51 MACRO ASSEMBLER  QUESTION_1                                                           03/18/2021 00:39:19 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Question_1.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE Question_1.asm SET(SMALL) DEBUG PRINT(.\Listings\Question_1.lst) OBJECT(.\Objec
+                      ts\Question_1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP main
+0100                   3     ORG 100H
+                       4     
+0100                   5     main:
+0100 7570FF            6             MOV 70H, #0FFH
+0103 7571FF            7             MOV 71H, #0FFH
+                       8     
+0106 E570              9             MOV A, 70H
+0108 2571             10             ADD A, 71H
+010A F572             11             MOV 72H, A
+                      12     
+010C 7400             13             MOV A, #00H
+010E 3400             14             ADDC A, #00H
+0110 F573             15             MOV 73H, A
+                      16     
+                      17     END
+A51 MACRO ASSEMBLER  QUESTION_1                                                           03/18/2021 00:39:19 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+MAIN . . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

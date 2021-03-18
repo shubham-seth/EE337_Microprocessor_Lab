@@ -1,0 +1,49 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    03/18/2021  00:39:19  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\C51\BIN\BL51.EXE .\Objects\Question_1.obj TO .\Objects\Q1 PRINT (.\Listings\Q1.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\Question_1.obj (QUESTION_1)
+
+
+LINK MAP OF MODULE:  .\Objects\Q1 (QUESTION_1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0112H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Q1 (QUESTION_1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        QUESTION_1
+  C:0100H         SYMBOL        MAIN
+  C:0000H         LINE#         2
+  C:0100H         LINE#         6
+  C:0103H         LINE#         7
+  C:0106H         LINE#         9
+  C:0108H         LINE#         10
+  C:010AH         LINE#         11
+  C:010CH         LINE#         13
+  C:010EH         LINE#         14
+  C:0110H         LINE#         15
+  -------         ENDMOD        QUESTION_1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0015H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=274
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

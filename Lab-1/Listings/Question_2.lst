@@ -1,0 +1,97 @@
+A51 MACRO ASSEMBLER  QUESTION_2                                                           03/18/2021 00:53:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Question_2.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE Question_2.asm SET(SMALL) DEBUG PRINT(.\Listings\Question_2.lst) OBJECT(.\Objec
+                      ts\Question_2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020100            2     LJMP main_function
+                       3     
+0100                   4     ORG 100H
+0100                   5     main_function:
+                       6     
+0100 757061            7             MOV 70H, #61H
+0103 757145            8             MOV 71H, #45H
+                       9             
+0106 E570             10             MOV A, 70H
+0108 54F0             11             ANL A, #0F0H
+010A C4               12             SWAP A
+010B 312A             13             ACALL encoder
+010D F572             14             MOV 72H, A
+                      15             
+010F E570             16             MOV A, 70H
+0111 540F             17             ANL A, #0FH
+0113 312A             18             ACALL encoder
+0115 F573             19             MOV 73H, A
+                      20             
+0117 E571             21             MOV A, 71H
+0119 54F0             22             ANL A, #0F0H
+011B C4               23             SWAP A
+011C 312A             24             ACALL encoder
+011E F574             25             MOV 74H, A
+                      26             
+0120 E571             27             MOV A, 71H
+0122 540F             28             ANL A, #0FH
+0124 312A             29             ACALL encoder
+0126 F575             30             MOV 75H, A
+                      31     
+0128 80D6             32     SJMP main_function
+                      33     
+012A                  34     encoder:
+012A F8               35             MOV R0, A
+012B 530001           36             ANL 00H, #01H
+                      37             
+012E 03               38             RR A
+012F F9               39             MOV R1, A
+0130 530101           40             ANL 01H, #01H
+                      41             
+0133 03               42             RR A
+0134 FA               43             MOV R2, A
+0135 530201           44             ANL 02H, #01H
+                      45             
+0138 03               46             RR A
+0139 FB               47             MOV R3, A
+013A 530301           48             ANL 03H, #01H
+                      49             
+013D 03               50             RR A
+013E 68               51             XRL A, R0
+013F 6A               52             XRL A, R2
+0140 6B               53             XRL A, R3
+                      54             
+0141 03               55             RR A
+0142 68               56             XRL A, R0
+0143 69               57             XRL A, R1
+A51 MACRO ASSEMBLER  QUESTION_2                                                           03/18/2021 00:53:14 PAGE     2
+
+0144 6B               58             XRL A, R3
+                      59             
+0145 03               60             RR A
+0146 69               61             XRL A, R1
+0147 6A               62             XRL A, R2
+0148 6B               63             XRL A, R3
+                      64             
+0149 03               65             RR A
+014A 03               66             RR A
+014B 22               67             RET
+                      68     
+                      69     END
+A51 MACRO ASSEMBLER  QUESTION_2                                                           03/18/2021 00:53:14 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ENCODER. . . . . .  C ADDR   012AH   A   
+MAIN_FUNCTION. . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

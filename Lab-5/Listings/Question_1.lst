@@ -1,0 +1,48 @@
+A51 MACRO ASSEMBLER  QUESTION_1                                                           02/17/2021 12:30:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Question_1.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE Question_1.asm SET(SMALL) DEBUG PRINT(.\Listings\Question_1.lst) OBJECT(.\Objec
+                      ts\Question_1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020300            2     LJMP main
+0300                   3     ORG 300H
+                       4             
+0300                   5     main:
+0300 758CFF            6             MOV TH0, #0FFH
+0303 758AF8            7             MOV TL0, #0F8H
+0306 758901            8             MOV TMOD, #01H
+0309 C28D              9             CLR TCON.5
+030B D28C             10             SETB TCON.4
+030D                  11             here: 
+030D 108D02           12                     JBC TCON.5, to_end
+0310 80FB             13             SJMP here
+0312 C28C             14             to_end: CLR TCON.4
+0314 80FE             15             stopper: SJMP stopper
+                      16     END
+A51 MACRO ASSEMBLER  QUESTION_1                                                           02/17/2021 12:30:07 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   030DH   A   
+MAIN . . . . . . .  C ADDR   0300H   A   
+STOPPER. . . . . .  C ADDR   0314H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TO_END . . . . . .  C ADDR   0312H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

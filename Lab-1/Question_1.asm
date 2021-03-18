@@ -1,0 +1,17 @@
+ORG 0H
+LJMP main
+ORG 100H
+
+main:
+	MOV 70H, #0FFH
+	MOV 71H, #0FFH
+
+	MOV A, 70H
+	ADD A, 71H
+	MOV 72H, A
+
+	MOV A, #00H
+	ADDC A, #00H
+	MOV 73H, A
+
+END

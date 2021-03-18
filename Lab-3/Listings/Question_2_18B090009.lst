@@ -1,0 +1,84 @@
+A51 MACRO ASSEMBLER  QUESTION_2_18B090009                                                 02/03/2021 15:49:53 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Question_2_18B090009.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE Question_2_18B090009.asm SET(SMALL) DEBUG PRINT(.\Listings\Question_2_18B090009
+                      .lst) OBJECT(.\Objects\Question_2_18B090009.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+                       4             
+0100                   5     MAIN:
+0100 75900F            6             MOV P1, #0FH
+0103 E590              7             MOV A, P1
+0105 540F              8             ANL A, #0FH ; Value of D in A
+0107 FB                9             MOV R3, A ; R3 holds the value of D
+                      10             
+0108                  11             TOGGLE_7:
+0108 312D             12                     ACALL TOGGLE_6
+010A 312D             13                     ACALL TOGGLE_6
+010C B297             14                     CPL P1.7
+010E 020108           15             LJMP TOGGLE_7
+                      16             
+0111                  17     DELAY: ;Delays by D/4
+0111                  18             LOOP_D_4:
+0111 7AFA             19                     MOV R2, #250
+0113                  20                     loop_250ms: ;250ms delay causing loop
+0113 78B6             21                             MOV R0, #182
+0115                  22                             LOOP_1ms: ;1ms delay causing loop
+0115 7904             23                                     MOV R1, #4
+0117                  24                                     LOOP_in:
+0117 D9FE             25                                     DJNZ R1, LOOP_in
+0119 D8FA             26                             DJNZ R0, LOOP_1ms
+011B DAF6             27                     DJNZ R2, LOOP_250ms
+011D DBF2             28             DJNZ R3, LOOP_D_4
+011F FB               29             MOV R3, A
+0120 22               30             RET
+                      31             
+0121                  32     TOGGLE_4:
+0121 B294             33             CPL P1.4
+0123 3111             34             ACALL DELAY
+0125 22               35             RET
+                      36             
+0126                  37     TOGGLE_5:
+0126 3121             38             ACALL TOGGLE_4
+0128 3121             39             ACALL TOGGLE_4
+012A B295             40             CPL P1.5
+012C 22               41             RET
+                      42             
+012D                  43     TOGGLE_6:
+012D 3126             44             ACALL TOGGLE_5
+012F 3126             45             ACALL TOGGLE_5
+0131 B296             46             CPL P1.6
+0133 22               47             RET
+                      48             
+                      49     END
+A51 MACRO ASSEMBLER  QUESTION_2_18B090009                                                 02/03/2021 15:49:53 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0111H   A   
+LOOP_1MS . . . . .  C ADDR   0115H   A   
+LOOP_250MS . . . .  C ADDR   0113H   A   
+LOOP_D_4 . . . . .  C ADDR   0111H   A   
+LOOP_IN. . . . . .  C ADDR   0117H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TOGGLE_4 . . . . .  C ADDR   0121H   A   
+TOGGLE_5 . . . . .  C ADDR   0126H   A   
+TOGGLE_6 . . . . .  C ADDR   012DH   A   
+TOGGLE_7 . . . . .  C ADDR   0108H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

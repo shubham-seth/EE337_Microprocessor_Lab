@@ -1,0 +1,97 @@
+A51 MACRO ASSEMBLER  QUESTION_1                                                           01/27/2021 15:07:43 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Question_1.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE Question_1.asm SET(SMALL) DEBUG PRINT(.\Listings\Question_1.lst) OBJECT(.\Objec
+                      ts\Question_1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020124            2     LJMP main
+0100                   3     ORG 100H
+                       4     
+0100                   5     memcpy:
+0100 A851              6             MOV R0, 51H ; M1 in R0
+0102 A952              7             MOV R1, 52H ; M2 in R1
+0104 AA50              8             MOV R2, 50H ; N is in 52H
+                       9             
+0106 E8               10             MOV A, R0 ; M1 location in accumulator
+0107 C3               11             CLR C ; clear the carry flag before subtraction
+0108 99               12             SUBB A, R1 ; M1-M2 in accumulator. If >0 then forward pass, else backward pass
+0109 4008             13             JC backpass ; If M1-M2<0, then borrow occurs, i.e. carry is set
+                      14     
+010B                  15             forwardpass:
+010B E6               16                     MOV A, @R0 ; (A)=M1
+010C F7               17                     MOV @R1, A ; (R1)=M1, (A)=M1
+010D 08               18                     INC R0
+010E 09               19                     INC R1
+010F DAFA             20                     DJNZ R2, forwardpass
+0111 8010             21             JMP done;
+                      22             
+0113                  23             backpass:
+0113 E8               24                     MOV A, R0
+0114 2A               25                     ADD A, R2
+0115 24FF             26                     ADD A, #0FFH
+0117 F8               27                     MOV R0, A ; R0 = M1+N-1
+0118 E9               28                     MOV A, R1
+0119 2A               29                     ADD A, R2
+011A 24FF             30                     ADD A, #0FFH 
+011C F9               31                     MOV R1, A ; R1 = M2+N-1
+011D                  32                     loop:
+011D E6               33                             MOV A, @R0
+011E F7               34                             MOV @R1, A
+011F 18               35                             DEC R0
+0120 19               36                             DEC R1
+0121 DAFA             37                             DJNZ R2, loop
+                      38                     
+0123 22               39             done: RET
+                      40                     
+0124                  41     main:
+0124 75500A           42             MOV 50H, #0AH
+0127 755165           43             MOV 51H, #65H
+012A 755260           44             MOV 52H, #60H
+                      45             
+012D 756005           46             MOV 60H, #5H
+0130 756106           47             MOV 61H, #6H
+0133 756207           48             MOV 62H, #7H
+0136 756308           49             MOV 63H, #8H
+0139 756409           50             MOV 64H, #9H
+013C 75650A           51             MOV 65H, #0AH
+013F 75660B           52             MOV 66H, #0BH
+0142 75670C           53             MOV 67H, #0CH
+0145 75680D           54             MOV 68H, #0DH
+0148 75690E           55             MOV 69H, #0EH
+014B 756A0B           56             MOV 6AH, #0BH
+014E 756B0C           57             MOV 6BH, #0CH
+A51 MACRO ASSEMBLER  QUESTION_1                                                           01/27/2021 15:07:43 PAGE     2
+
+0151 756C0D           58             MOV 6CH, #0DH
+0154 756D0E           59             MOV 6DH, #0EH
+0157 756E10           60             MOV 6EH, #10H
+015A 756F11           61             MOV 6FH, #11H
+                      62                     
+015D 120100           63             LCALL memcpy
+                      64             
+                      65     END
+A51 MACRO ASSEMBLER  QUESTION_1                                                           01/27/2021 15:07:43 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACKPASS . . . . .  C ADDR   0113H   A   
+DONE . . . . . . .  C ADDR   0123H   A   
+FORWARDPASS. . . .  C ADDR   010BH   A   
+LOOP . . . . . . .  C ADDR   011DH   A   
+MAIN . . . . . . .  C ADDR   0124H   A   
+MEMCPY . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
