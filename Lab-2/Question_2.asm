@@ -1,9 +1,16 @@
-MOV A,#0BFH
-MOV P0,A
-MOV R0,#0C9H
-MOV A,#00
-loop:INC A
-DEC R0
-CJNE R0,#1FH,loop
-MOV P0,A
-MOV A,P0
+org 000H
+ljmp start
+
+org 100H
+start:
+	MOV 60H, #0H
+	MOV 61H, #2H
+	MOV A, 60H
+	ADD A, 61H
+	MOV 62H, A
+	
+	CLR PSW.5
+	MOV C, PSW.2
+	CPL C
+	MOV PSW.5, C
+end
