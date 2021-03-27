@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              03/24/2021 11:25:22 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              03/26/2021 14:35:17 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -60,9 +60,9 @@ line level    source
   49   2          lcd_write_string(display_msg2);                     //Display "XXXXX mV"
   50   2          
   51   2          //LM35 Temperature sensor interfacing: Uncomment following code
-  52   2      /*  
+  52   2      
   53   2          x = adc(7);                                         //Read analog value from 7th channel of ADC Ic MCP3008
-C51 COMPILER V9.60.0.0   MAIN                                                              03/24/2021 11:25:22 PAGE 2   
+C51 COMPILER V9.60.0.0   MAIN                                                              03/26/2021 14:35:17 PAGE 2   
 
   54   2          
   55   2          
@@ -84,14 +84,14 @@ line level    source
   70   2          display_msg3[4] = adc_ip_data_ascii[4];
   71   2                           
   72   2          lcd_write_string(display_msg3);                     //Print temperature sensed by sensor
-  73   2      */  
+  73   2        
   74   2        }
   75   1      }
   76          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    672    ----
+   CODE SIZE        =    780    ----
    CONSTANT SIZE    =     20    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

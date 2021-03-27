@@ -49,7 +49,7 @@ void main(void)
 		lcd_write_string(display_msg2);											//Display "XXXXX mV"
 		
 		//LM35 Temperature sensor interfacing: Uncomment following code
-/*	
+
 		x = adc(7);																					//Read analog value from 7th channel of ADC Ic MCP3008
 		
 		
@@ -70,7 +70,7 @@ void main(void)
 		display_msg3[4] = adc_ip_data_ascii[4];
 										 
 		lcd_write_string(display_msg3);											//Print temperature sensed by sensor
-*/	
+	
 	}
 }
 
