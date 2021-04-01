@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              03/26/2021 14:35:17 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              03/31/2021 23:04:51 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   51   2          //LM35 Temperature sensor interfacing: Uncomment following code
   52   2      
   53   2          x = adc(7);                                         //Read analog value from 7th channel of ADC Ic MCP3008
-C51 COMPILER V9.60.0.0   MAIN                                                              03/26/2021 14:35:17 PAGE 2   
+C51 COMPILER V9.60.0.0   MAIN                                                              03/31/2021 23:04:51 PAGE 2   
 
   54   2          
   55   2          
